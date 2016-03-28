@@ -37,48 +37,32 @@ class GitAuthorsView
       # console.log stdout
       lines = stdout.split('\n')
       authNames = lines.map (l) ->
-        console.log "l:#{l}"
+        # console.log "l:#{l}"
         if l
           nm = l.match(/.+ \((.+) +\d{4}-.+/)
-          console.log "nm:#{nm}"
+          # console.log "nm:#{nm}"
           nm[1]
-        #  Eg, the output format is thus: "86ae4ff7 (Sindre Sorhus                  2016..."
-        # l.slice(10,30).trim()
-        # p1 = l.split("(")[1]
-        # p2 = new String(p1).split(" ")[0]
-        # l.split("(")[1].split(" ")[0]
-      # authNames = []
-      # for l in lines
-      #   if l.search("author ") != -1
-      #     authNames.push(l.substring(l.indexOf(" ")))
 
-      console.log "authNames: #{authNames.length}"
-
-      for n in authNames
-        console.log n
+      # console.log "authNames: #{authNames.length}"
 
       authFreq = {}
       for name in authNames
-        console.log "nm: #{name}"
+        # console.log "nm: #{name}"
         if name == undefined
           continue
         if authFreq[name] != undefined
-          console.log "incr nm:#{name}"
+          # console.log "incr nm:#{name}"
           authFreq[name]++
         else
-          console.log "adding nm:#{name}"
+          # console.log "adding nm:#{name}"
           authFreq[name] = 1
 
-      # authStr = ""
       for author, freq of authFreq
         console.log "AA #{author} AA: #{freq}"
-        # authStr = authStr + "<p>" + author + " : " + (freq / authNames.length * 100).toFixed(2) + "%</p>"
         authDiv = document.createElement("div")
         nameSpan = document.createElement("span");pcSpan = document.createElement("span");
         nameSpan.textContent = author; pcSpan.textContent = (freq / authNames.length * 100).toFixed(2) + "%"
         authDiv.appendChild nameSpan; authDiv.appendChild pcSpan
-        # authDiv.textContent = author + " : " + (freq / authNames.length * 100).toFixed(2) + "%"
-        # authDiv.textContent = author + " : " + freq
         panel.getItem().appendChild authDiv
 
     failure = (err) ->
