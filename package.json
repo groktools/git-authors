@@ -1,0 +1,18 @@
+{
+  "name": "git-authors",
+  "main": "./lib/git-authors",
+  "version": "0.0.0",
+  "description": "View authors for the currently active authors",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "git-authors:toggle"
+  },
+  "repository": "https://github.com/atom/git-authors",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
