@@ -2,7 +2,7 @@
 View the authors for the currently open file
 
 # Introduction
-**git-authors** is a simple addition to your editor - it displays the authors for a file so that you can contact them if required.
+**git-authors** is a simple addition to your editor - it displays the authors for a file so that you can contact them if required. Their % contributions are also shown.
 
 Screenshot of the tool run on the awesome list repo's readme file:
 ![Screenshot of the tool run on the awesome list repo's readme file](https://raw.githubusercontent.com/groktools/git-authors/master/git-authors.jpg)
