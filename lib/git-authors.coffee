@@ -3,12 +3,12 @@ GitAuthorsView = require './git-authors-view'
 
 module.exports = GitAuthors =
   gitAuthorsView: null
-  modalPanel: null
+  gAPanel: null
   subscriptions: null
 
   activate: (state) ->
     @gitAuthorsView = new GitAuthorsView(state.gitAuthorsViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @gitAuthorsView.getElement(), visible: false)
+    @gAPanel = atom.workspace.addRightPanel(item: @gitAuthorsView.getElement(), visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
@@ -17,7 +17,7 @@ module.exports = GitAuthors =
     @subscriptions.add atom.commands.add 'atom-workspace', 'git-authors:toggle': => @toggle()
 
   deactivate: ->
-    @modalPanel.destroy()
+    @gAPanel.destroy()
     @subscriptions.dispose()
     @gitAuthorsView.destroy()
 
@@ -27,8 +27,8 @@ module.exports = GitAuthors =
   toggle: ->
     console.log 'GitAuthors was toggled!'
 
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
+    if @gAPanel.isVisible()
+      @gAPanel.hide()
     else
-      @gitAuthorsView.getAuthors(@modalPanel)
-      @modalPanel.show()
+      @gitAuthorsView.getAuthors(@gAPanel)
+      @gAPanel.show()

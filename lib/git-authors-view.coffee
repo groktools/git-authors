@@ -7,13 +7,10 @@ class GitAuthorsView
 
   constructor: (serializedState) ->
     # Create root element
-    @element = document.createElement('div')
-    @element.classList.add('git-authors')
+    @element = @makeHTMLElement('div', 'git-authors')
 
     # Create message element
-    @message = document.createElement('div')
-    @message.textContent = "getting authors.."
-    @message.classList.add('message')
+    @message = @makeHTMLElement('div','message',"Getting authors..")
     @element.appendChild(@message)
     # @getAuthors()
 
@@ -57,13 +54,15 @@ class GitAuthorsView
           # console.log "adding nm:#{name}"
           authFreq[name] = 1
 
+      panel.getItem().removeChild(panel.getItem().firstChild)
       for author, freq of authFreq
         console.log "AA #{author} AA: #{freq}"
-        authDiv = document.createElement("div")
-        nameSpan = document.createElement("span");pcSpan = document.createElement("span");
-        nameSpan.textContent = author; pcSpan.textContent = (freq / authNames.length * 100).toFixed(2) + "%"
-        authDiv.appendChild nameSpan; authDiv.appendChild pcSpan
-        panel.getItem().appendChild authDiv
+        authLine = document.createElement("div");authLine.classList.add "authLine"
+        nameCol = document.createElement("div");pcCol = document.createElement("div");
+        nameCol.classList.add "authorName"; pcCol.classList.add "authorFreq";
+        nameCol.textContent = author; pcCol.textContent = (freq / authNames.length * 100).toFixed(2) + "%"
+        authLine.appendChild nameCol; authLine.appendChild pcCol
+        panel.getItem().appendChild authLine
 
     failure = (err) ->
       console.log err
@@ -77,3 +76,10 @@ class GitAuthorsView
       stdout: success,
       stderr: failure
     })
+
+  makeHTMLElement: (t,s,content) ->
+    el = document.createElement(t)
+    el.classList.add(s)
+    if content != undefined
+      el.textContent = content
+    el
