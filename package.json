@@ -1,10 +1,12 @@
 {
   "name": "git-authors",
   "main": "./lib/git-authors",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "View authors for the currently active authors",
   "keywords": [
-    "authors","git","groktools"
+    "authors",
+    "git",
+    "groktools"
   ],
   "activationCommands": {
     "atom-workspace": "git-authors:toggle"
@@ -14,6 +16,5 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
