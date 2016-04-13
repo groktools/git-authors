@@ -9,7 +9,7 @@
   "activationCommands": {
     "atom-workspace": "git-authors:toggle"
   },
-  "repository": "https://github.com/atom/git-authors",
+  "repository": "https://github.com/groktools/git-authors",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
